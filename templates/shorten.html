@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <center>ractf.xyz - Shorten A Link</center>
+</header>
+<div class="content">
+    <center>
+        <form method="post">
+            {% csrf_token %}
+            {{  form.as_p }}
+            <button type="submit">Shorten</button>
+        </form>
+    </center>
+</div>
+{% endblock %}

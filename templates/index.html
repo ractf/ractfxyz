@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'upload' %}">Upload A File</a></p>
+        <p><a href="{% url 'shorten_link' %}">Shorten A Link</a></p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+    {% else %}
+    <a href="https://ractf.co.uk"><img src="https://ractf.co.uk/wordmark.png" alt="ractf"></a>
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+{% endblock %}
