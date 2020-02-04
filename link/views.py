@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import FormView
 
@@ -14,10 +15,12 @@ def redirect_view(request, key):
         return redirect(settings.FALLBACK_URL)
 
 
-class RedirectView(FormView):
+class RedirectView(LoginRequiredMixin, FormView):
     template_name = 'shorten.html'
     form_class = LinkForm
     success_url = '/'
+    login_url = '/auth/login'
+    redirect_field_name = 'redirect_to'
 
     def form_valid(self, form):
         form.save()
